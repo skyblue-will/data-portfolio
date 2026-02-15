@@ -399,6 +399,95 @@ export default function Home() {
         ))}
       </section>
 
+      {/* ── Affiliate Programme ────────────────── */}
+      <section className="max-w-5xl mx-auto px-6 pb-10">
+        <div className="rounded-2xl border border-slate-800/60 bg-slate-900/40 backdrop-blur-sm overflow-hidden">
+          <div className="px-6 pt-5 pb-4">
+            <h2 className="text-lg font-semibold text-white">Affiliate Programme</h2>
+            <p className="text-xs text-slate-500 mt-1">
+              Awin Publisher ID: <span className="text-slate-400 font-mono">2753640</span> — shared across portfolio
+            </p>
+          </div>
+
+          {/* Methodology */}
+          <div className="px-6 pb-4">
+            <h3 className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest mb-2">
+              Vetting Methodology
+            </h3>
+            <div className="grid sm:grid-cols-5 gap-2">
+              {[
+                { icon: "⭐", text: "Trustpilot 4.0★+ min (volume matters)" },
+                { icon: "🏦", text: "FCA registered (insurance/finance)" },
+                { icon: "🔍", text: "Complaint pattern analysis" },
+                { icon: "🏢", text: "Parent company check" },
+                { icon: "🚩", text: "Red flag keyword search" },
+              ].map((m) => (
+                <div key={m.text} className="bg-slate-800/40 rounded-lg px-3 py-2 text-center">
+                  <div className="text-lg">{m.icon}</div>
+                  <div className="text-[10px] text-slate-400 mt-1 leading-tight">{m.text}</div>
+                </div>
+              ))}
+            </div>
+            <p className="text-[11px] text-slate-600 mt-2 italic">
+              &quot;We only promote services we&apos;d recommend to a friend. If Trustpilot drops or complaints emerge, the programme gets pulled.&quot;
+            </p>
+          </div>
+
+          {/* Approved / Rejected stats */}
+          <div className="px-6 pb-4 grid sm:grid-cols-2 gap-4">
+            <div>
+              <h3 className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest mb-2">
+                Approved — 17 programmes
+              </h3>
+              <div className="space-y-1">
+                {[
+                  { cat: "Insurance Comparison", names: "Go Compare, MoneySupermarket" },
+                  { cat: "Flexible Insurance", names: "Cuvva, Veygo (Admiral)" },
+                  { cat: "Breakdown", names: "AA, RAC, Motoring Assistance" },
+                  { cat: "Warranty / GAP", names: "AA Warranty, MotorEasy" },
+                  { cat: "Garage / Mechanic", names: "BookMyGarage, ClickMechanic" },
+                  { cat: "Tyres / Parts", names: "Black Circles, Euro Car Parts, GSF" },
+                  { cat: "Car Finance", names: "Quick Car Finance, Carmoola" },
+                ].map((row) => (
+                  <div key={row.cat} className="flex items-start gap-2 text-xs">
+                    <span className="text-green-400 text-[10px] mt-0.5">●</span>
+                    <span className="text-slate-500 w-32 flex-shrink-0">{row.cat}</span>
+                    <span className="text-slate-300">{row.names}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest mb-2">
+                Rejected — 5 programmes
+              </h3>
+              <div className="space-y-1">
+                {[
+                  { name: "The Bike Insurer", reason: "2.3★ — misleading quotes" },
+                  { name: "The Van Insurer", reason: "2.1★ — quotes not honoured" },
+                  { name: "QDOS Breakdown", reason: "2.2★ — non-attendance reports" },
+                  { name: "mytyres.co.uk", reason: "2.5★ — customs delays, refund issues" },
+                  { name: "moto-tyres.co.uk", reason: "2.9★ — same parent, same problems" },
+                ].map((row) => (
+                  <div key={row.name} className="flex items-start gap-2 text-xs">
+                    <span className="text-red-400 text-[10px] mt-0.5">●</span>
+                    <span className="text-slate-500 w-32 flex-shrink-0">{row.name}</span>
+                    <span className="text-slate-500">{row.reason}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Placement note */}
+          <div className="px-6 py-3 bg-slate-900/60 border-t border-slate-800/40">
+            <p className="text-[11px] text-slate-500">
+              <span className="text-slate-400 font-medium">Placement:</span> Contextual links only — tyre failures → Black Circles, low pass rates → breakdown cover, buying guides → warranty + insurance. No banner spam. All <code className="text-[10px] bg-slate-800 px-1 rounded">rel=&quot;sponsored&quot;</code>, GA4 tracked, disclosed.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ── To Consider ─────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 pb-10">
         <div className="rounded-2xl border border-slate-800/40 bg-slate-900/20 p-6">
