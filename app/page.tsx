@@ -399,6 +399,29 @@ export default function Home() {
         ))}
       </section>
 
+      {/* ── To Consider ─────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-6 pb-10">
+        <div className="rounded-2xl border border-slate-800/40 bg-slate-900/20 p-6">
+          <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-widest mb-4">
+            💡 To Consider
+          </h2>
+          <div className="space-y-3">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-slate-300">Clay</span>
+                <span className="text-[11px] text-slate-600 border border-slate-800/60 rounded px-1.5 py-0.5">Phase 2</span>
+              </div>
+              <p className="text-xs text-slate-500 mt-1 max-w-2xl">
+                B2B data enrichment tool. Use once sites have traffic to build direct affiliate relationships at scale — 
+                e.g. enrich CQC care home owners for direct referral deals (skip the affiliate network), 
+                prospect energy installers for Joule, garages for Rev. Also useful for PR/link building outreach.
+                Starts ~$149/mo — needs to earn its keep.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ── Footer ────────────────────────────────── */}
       <footer className="max-w-5xl mx-auto px-6 pb-12 text-center">
         <p className="text-[11px] text-slate-700">
