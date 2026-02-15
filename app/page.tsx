@@ -39,7 +39,7 @@ const projects: Project[] = [
       gsc: "Verified",
       sitemap: "2,494 pages",
       ga4: "G-0M5CHV7J5Y",
-      notes: "Indexing API not enabled — needs GCP console",
+      notes: "Google Indexing API not enabled in GCP — needed to bulk-submit URLs for faster crawling",
     },
     tasks: [],
     accent: "text-red-400",
