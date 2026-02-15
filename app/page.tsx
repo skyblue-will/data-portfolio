@@ -1,3 +1,5 @@
+type Task = { text: string; done: boolean };
+
 const projects = [
   {
     name: "Rev",
@@ -10,6 +12,7 @@ const projects = [
     dataSources: ["DVSA MOT History API", "DfT Fleet Statistics"],
     nextLayers: ["DVLA Vehicle Data", "Recall Notices", "STATS19 Accidents", "Fuel Economy"],
     affiliates: ["Car Insurance", "Garage Bookings", "Car Buying Guides"],
+    tasks: [] as Task[],
     color: "from-red-500/20 to-orange-500/20",
     border: "border-red-500/30",
     badge: "bg-red-500/20 text-red-300",
@@ -31,6 +34,10 @@ const projects = [
     ],
     nextLayers: ["Conservation Area Status", "Flood Risk", "Local Authority Grants"],
     affiliates: ["Solar Installers", "Heat Pumps", "Insulation", "Energy Switching"],
+    tasks: [
+      { text: "Logo design", done: false },
+      { text: "Move domain", done: false },
+    ] as Task[],
     color: "from-yellow-500/20 to-amber-500/20",
     border: "border-yellow-500/30",
     badge: "bg-yellow-500/20 text-yellow-300",
@@ -52,6 +59,11 @@ const projects = [
       "Local Authority Funding",
     ],
     affiliates: ["Care Home Referrals (£500-2000+)", "Care Equipment", "Elderly Care Insurance"],
+    tasks: [
+      { text: "CQC API key registration", done: false },
+      { text: "Search results page", done: false },
+      { text: "Domain purchase (carehomeratings.co.uk?)", done: false },
+    ] as Task[],
     color: "from-emerald-500/20 to-teal-500/20",
     border: "border-emerald-500/30",
     badge: "bg-emerald-500/20 text-emerald-300",
@@ -84,6 +96,10 @@ const projects = [
       "Home Insurance",
       "Outdoor Gear",
     ],
+    tasks: [
+      { text: "Scaffold project", done: false },
+      { text: "Core postcode search", done: false },
+    ] as Task[],
     color: "from-green-500/20 to-emerald-500/20",
     border: "border-green-500/30",
     badge: "bg-green-500/20 text-green-300",
@@ -227,6 +243,27 @@ export default function Home() {
                   ))}
                 </div>
               </div>
+
+              {/* Tasks */}
+              {project.tasks.length > 0 && (
+                <div className="mt-3 pt-3 border-t border-slate-700/30">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">
+                    Outstanding
+                  </span>
+                  <div className="mt-1.5 space-y-1">
+                    {project.tasks.map((task) => (
+                      <div key={task.text} className="flex items-center gap-2 text-sm">
+                        <span className={task.done ? "text-green-400" : "text-slate-500"}>
+                          {task.done ? "✓" : "○"}
+                        </span>
+                        <span className={task.done ? "text-slate-500 line-through" : "text-slate-300"}>
+                          {task.text}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
