@@ -34,14 +34,19 @@ const projects: Project[] = [
       "Enter a reg plate, get the full MOT history. Failure trends by make and model, reliability scores, garage pass rates — all from millions of DVSA test records.",
     dataSources: ["DVSA MOT History API", "DfT Fleet Statistics"],
     nextLayers: ["DVLA Vehicle Data", "Recall Notices", "STATS19 Accidents", "Fuel Economy"],
-    affiliates: ["Car Insurance", "Garage Bookings", "Car Buying Guides"],
+    affiliates: ["Insurance (Go Compare, MSM)", "Breakdown (AA, RAC)", "Garages (BookMyGarage, ClickMechanic)", "Tyres/Parts (Black Circles, Euro, GSF)", "Warranty (AA, MotorEasy)", "Finance (Carmoola, Quick Car Finance)", "Flexible (Cuvva, Veygo)"],
     seo: {
       gsc: "Verified",
       sitemap: "2,494 pages",
       ga4: "G-0M5CHV7J5Y",
       notes: "Google Indexing API not enabled in GCP — needed to bulk-submit URLs for faster crawling",
     },
-    tasks: [],
+    tasks: [
+      { text: "BookMyGarage (68338) — applied, awaiting approval", done: false },
+      { text: "Black Circles — email affiliates@ with placement details before applying", done: false },
+      { text: "Enable Google Indexing API on GCP project", done: false },
+      { text: "Apply to remaining 15 vetted programmes (one at a time, check T&Cs)", done: false },
+    ],
     accent: "text-red-400",
     accentLight: "bg-red-500/10",
     accentBorder: "border-red-500/20",
@@ -433,48 +438,119 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Approved / Rejected stats */}
-          <div className="px-6 pb-4 grid sm:grid-cols-2 gap-4">
-            <div>
-              <h3 className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest mb-2">
-                Approved — 17 programmes
-              </h3>
-              <div className="space-y-1">
-                {[
-                  { cat: "Insurance Comparison", names: "Go Compare, MoneySupermarket" },
-                  { cat: "Flexible Insurance", names: "Cuvva, Veygo (Admiral)" },
-                  { cat: "Breakdown", names: "AA, RAC, Motoring Assistance" },
-                  { cat: "Warranty / GAP", names: "AA Warranty, MotorEasy" },
-                  { cat: "Garage / Mechanic", names: "BookMyGarage, ClickMechanic" },
-                  { cat: "Tyres / Parts", names: "Black Circles, Euro Car Parts, GSF" },
-                  { cat: "Car Finance", names: "Quick Car Finance, Carmoola" },
-                ].map((row) => (
-                  <div key={row.cat} className="flex items-start gap-2 text-xs">
-                    <span className="text-green-400 text-[10px] mt-0.5">●</span>
-                    <span className="text-slate-500 w-32 flex-shrink-0">{row.cat}</span>
-                    <span className="text-slate-300">{row.names}</span>
+          {/* Rev Affiliate Status */}
+          <div className="px-6 pb-4">
+            <h3 className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest mb-3">
+              🚗 Rev (motdata.uk) — 17 vetted, 1 applied, 16 ready
+            </h3>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div>
+                <h4 className="text-[10px] font-medium text-blue-400 mb-1.5">Applied (1)</h4>
+                <div className="space-y-1">
+                  <div className="flex items-start gap-2 text-xs">
+                    <span className="text-blue-400 text-[10px] mt-0.5">◐</span>
+                    <span className="text-slate-300">BookMyGarage</span>
+                    <span className="text-slate-600 text-[10px]">awaiting</span>
                   </div>
-                ))}
+                </div>
+              </div>
+              <div>
+                <h4 className="text-[10px] font-medium text-green-400 mb-1.5">Ready to Apply (16)</h4>
+                <div className="space-y-1">
+                  {[
+                    { cat: "Insurance", names: "Go Compare (Car+Van), MoneySupermarket, Cuvva, Veygo" },
+                    { cat: "Breakdown", names: "AA, RAC, Motoring Assistance" },
+                    { cat: "Warranty", names: "AA Warranty, MotorEasy" },
+                    { cat: "Garage", names: "ClickMechanic" },
+                    { cat: "Tyres/Parts", names: "Black Circles⚠️, Euro Car Parts, GSF" },
+                    { cat: "Finance", names: "Quick Car Finance, Carmoola" },
+                  ].map((row) => (
+                    <div key={row.cat} className="flex items-start gap-2 text-xs">
+                      <span className="text-green-400 text-[10px] mt-0.5">●</span>
+                      <span className="text-slate-500 w-20 flex-shrink-0">{row.cat}</span>
+                      <span className="text-slate-300">{row.names}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-[10px] text-slate-600 mt-1.5">⚠️ Black Circles: needs email to affiliates@ before applying</p>
+              </div>
+              <div>
+                <h4 className="text-[10px] font-medium text-red-400 mb-1.5">Rejected (5)</h4>
+                <div className="space-y-1">
+                  {[
+                    { name: "The Bike Insurer", reason: "2.3★" },
+                    { name: "The Van Insurer", reason: "2.1★" },
+                    { name: "QDOS Breakdown", reason: "2.2★" },
+                    { name: "mytyres.co.uk", reason: "2.5★" },
+                    { name: "moto-tyres.co.uk", reason: "2.9★" },
+                  ].map((row) => (
+                    <div key={row.name} className="flex items-start gap-2 text-xs">
+                      <span className="text-red-400 text-[10px] mt-0.5">●</span>
+                      <span className="text-slate-400">{row.name}</span>
+                      <span className="text-slate-600">{row.reason}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-            <div>
-              <h3 className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest mb-2">
-                Rejected — 5 programmes
-              </h3>
-              <div className="space-y-1">
-                {[
-                  { name: "The Bike Insurer", reason: "2.3★ — misleading quotes" },
-                  { name: "The Van Insurer", reason: "2.1★ — quotes not honoured" },
-                  { name: "QDOS Breakdown", reason: "2.2★ — non-attendance reports" },
-                  { name: "mytyres.co.uk", reason: "2.5★ — customs delays, refund issues" },
-                  { name: "moto-tyres.co.uk", reason: "2.9★ — same parent, same problems" },
-                ].map((row) => (
-                  <div key={row.name} className="flex items-start gap-2 text-xs">
-                    <span className="text-red-400 text-[10px] mt-0.5">●</span>
-                    <span className="text-slate-500 w-32 flex-shrink-0">{row.name}</span>
-                    <span className="text-slate-500">{row.reason}</span>
-                  </div>
-                ))}
+            <p className="text-[10px] text-slate-600 mt-3 italic">
+              All 17 programme links live on site as direct URLs. Awin tracking activated per-programme on approval. Placements are contextual — tyre links on tyre failure pages, breakdown when roadside risk &gt;25%, warranty on warranty cliff &gt;5pp.
+            </p>
+          </div>
+
+          {/* Joule Affiliate Status */}
+          <div className="px-6 pb-4 border-t border-slate-800/40 pt-4">
+            <h3 className="text-[10px] font-semibold text-slate-600 uppercase tracking-widest mb-3">
+              ⚡ Joule (ukhomeenergyguide.co.uk) — 11 vetted, ready to apply
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <h4 className="text-[10px] font-medium text-amber-400 mb-1.5">Tier 1 — Apply First (8)</h4>
+                <div className="space-y-1">
+                  {[
+                    { cat: "Boiler Install", names: "BOXT (4.8★), Heatable (4.8★)" },
+                    { cat: "Solar", names: "Project Solar (4.7★), OVO Solar (5★)" },
+                    { cat: "Multi-product", names: "Glow Green (4.7★)" },
+                    { cat: "Boiler Cover", names: "Hometree (4.7★)" },
+                    { cat: "Energy Switch", names: "EDF (4.6★), E.ON Next (4.5★)" },
+                  ].map((row) => (
+                    <div key={row.cat} className="flex items-start gap-2 text-xs">
+                      <span className="text-amber-400 text-[10px] mt-0.5">●</span>
+                      <span className="text-slate-500 w-24 flex-shrink-0">{row.cat}</span>
+                      <span className="text-slate-300">{row.names}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div>
+                <h4 className="text-[10px] font-medium text-slate-400 mb-1.5">Tier 2 — Follow-up (3)</h4>
+                <div className="space-y-1">
+                  {[
+                    { cat: "Boiler Cover", names: "YourRepair (4.6★)" },
+                    { cat: "Heating Oil", names: "BoilerJuice (4.4★)" },
+                    { cat: "Insulation", names: "Insulation4less (4.2★)" },
+                  ].map((row) => (
+                    <div key={row.cat} className="flex items-start gap-2 text-xs">
+                      <span className="text-slate-400 text-[10px] mt-0.5">●</span>
+                      <span className="text-slate-500 w-24 flex-shrink-0">{row.cat}</span>
+                      <span className="text-slate-300">{row.names}</span>
+                    </div>
+                  ))}
+                </div>
+                <h4 className="text-[10px] font-medium text-red-400 mt-3 mb-1.5">Rejected (3)</h4>
+                <div className="space-y-1">
+                  {[
+                    { name: "SolarVoxGreen", reason: "1.4★ scam" },
+                    { name: "Jackery UK", reason: "3.1★" },
+                    { name: "Home Emergency Assist", reason: "3.8★" },
+                  ].map((row) => (
+                    <div key={row.name} className="flex items-start gap-2 text-xs">
+                      <span className="text-red-400 text-[10px] mt-0.5">●</span>
+                      <span className="text-slate-400">{row.name}</span>
+                      <span className="text-slate-600">{row.reason}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
