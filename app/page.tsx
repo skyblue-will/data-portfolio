@@ -12,6 +12,7 @@ const projects = [
     dataSources: ["DVSA MOT History API", "DfT Fleet Statistics"],
     nextLayers: ["DVLA Vehicle Data", "Recall Notices", "STATS19 Accidents", "Fuel Economy"],
     affiliates: ["Car Insurance", "Garage Bookings", "Car Buying Guides"],
+    seo: { gsc: "✅ Verified", sitemap: "✅ 2,494 pages", ga4: "✅ G-0M5CHV7J5Y", notes: "Indexing API not enabled — needs GCP console" },
     tasks: [] as Task[],
     color: "from-red-500/20 to-orange-500/20",
     border: "border-red-500/30",
@@ -34,9 +35,12 @@ const projects = [
     ],
     nextLayers: ["Conservation Area Status", "Flood Risk", "Local Authority Grants"],
     affiliates: ["Solar Installers", "Heat Pumps", "Insulation", "Energy Switching"],
+    seo: { gsc: "✅ Verified", sitemap: "⏳ After DNS switch", ga4: "✅ G-0H0F6XBV7T", notes: "Domain: ukhomeenergyguide.co.uk — DNS move to Vercel planned 16 Feb" },
     tasks: [
       { text: "Logo design", done: false },
-      { text: "Move domain", done: false },
+      { text: "DNS switch to Vercel (planned 16 Feb)", done: false },
+      { text: "Submit sitemap (after DNS)", done: false },
+      { text: "Soft launch (target 18 Feb)", done: false },
     ] as Task[],
     color: "from-yellow-500/20 to-amber-500/20",
     border: "border-yellow-500/30",
@@ -59,6 +63,7 @@ const projects = [
       "Local Authority Funding",
     ],
     affiliates: ["Care Home Referrals (£500-2000+)", "Care Equipment", "Elderly Care Insurance"],
+    seo: { gsc: "❌ Not set up", sitemap: "❌", ga4: "❌", notes: "Waiting on custom domain" },
     tasks: [
       { text: "CQC API key registration", done: false },
       { text: "Search results page", done: false },
@@ -96,6 +101,7 @@ const projects = [
       "Home Insurance",
       "Outdoor Gear",
     ],
+    seo: { gsc: "❌ Not started", sitemap: "❌", ga4: "❌", notes: "Project not scaffolded yet" },
     tasks: [
       { text: "Scaffold project", done: false },
       { text: "Core postcode search", done: false },
@@ -243,6 +249,32 @@ export default function Home() {
                   ))}
                 </div>
               </div>
+
+              {/* SEO Status */}
+              {project.seo && (
+                <div className="mt-3 pt-3 border-t border-slate-700/30">
+                  <span className="text-xs text-slate-500 uppercase tracking-wider font-medium">
+                    SEO & Analytics
+                  </span>
+                  <div className="grid grid-cols-3 gap-3 mt-1.5 text-xs">
+                    <div>
+                      <span className="text-slate-500">GSC: </span>
+                      <span className="text-slate-300">{project.seo.gsc}</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500">Sitemap: </span>
+                      <span className="text-slate-300">{project.seo.sitemap}</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500">GA4: </span>
+                      <span className="text-slate-300">{project.seo.ga4}</span>
+                    </div>
+                  </div>
+                  {project.seo.notes && (
+                    <p className="text-xs text-slate-500 mt-1">{project.seo.notes}</p>
+                  )}
+                </div>
+              )}
 
               {/* Tasks */}
               {project.tasks.length > 0 && (
