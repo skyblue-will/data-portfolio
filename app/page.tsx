@@ -19,7 +19,7 @@ const projects = [
     emoji: "⚡",
     tagline: "UK Home Energy Guide",
     url: null,
-    status: "live" as const,
+    status: "building" as const,
     description:
       "Understand your home's energy efficiency. EPC ratings, improvement recommendations, grant eligibility — layering 9 data sources and growing.",
     dataSources: [
