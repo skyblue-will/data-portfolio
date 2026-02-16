@@ -262,10 +262,71 @@ export default function Home() {
         </div>
       </header>
 
-      {/* ── Divider ───────────────────────────────── */}
-      <div className="max-w-5xl mx-auto px-6">
-        <div className="border-t border-slate-800/60" />
-      </div>
+      {/* ── E-E-A-T ──────────────────────────────── */}
+      <section className="max-w-5xl mx-auto px-6 pt-10 pb-6">
+        <div className="rounded-2xl border border-indigo-500/20 bg-indigo-500/5 backdrop-blur-sm overflow-hidden">
+          <div className="px-6 pt-5 pb-2">
+            <h2 className="text-lg font-semibold text-white">E-E-A-T: Why Our Sites Rank</h2>
+            <p className="text-xs text-slate-500 mt-1">
+              Google&apos;s quality framework isn&apos;t something we optimise for — it&apos;s what we are.
+            </p>
+          </div>
+          <div className="px-6 pb-5 grid sm:grid-cols-4 gap-3">
+            {[
+              {
+                letter: "E",
+                title: "Experience",
+                desc: "Users interact with real, live data — not content about data. Every page is generated from actual API responses. The experience IS the data.",
+                color: "text-blue-400",
+                border: "border-blue-500/20",
+                bg: "bg-blue-500/5",
+              },
+              {
+                letter: "E",
+                title: "Expertise",
+                desc: "We layer multiple datasets for insights nobody else has. Roadside risk scores, warranty cliffs, fuel poverty cross-references — expertise through combination.",
+                color: "text-emerald-400",
+                border: "border-emerald-500/20",
+                bg: "bg-emerald-500/5",
+              },
+              {
+                letter: "A",
+                title: "Authoritativeness",
+                desc: "Data from UK government APIs: DVSA, CQC, Land Registry, Environment Agency, ONS, OFGEM, NHS Digital. Authority inherited from the source.",
+                color: "text-amber-400",
+                border: "border-amber-500/20",
+                bg: "bg-amber-500/5",
+              },
+              {
+                letter: "T",
+                title: "Trustworthiness",
+                desc: "Affiliates vetted at 4.0★+ Trustpilot. Contextual placement driven by data, not revenue. All links disclosed. No dark patterns. Ever.",
+                color: "text-rose-400",
+                border: "border-rose-500/20",
+                bg: "bg-rose-500/5",
+              },
+            ].map((item) => (
+              <div
+                key={item.title}
+                className={`rounded-xl border ${item.border} ${item.bg} p-4`}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <span className={`text-2xl font-black ${item.color}`}>{item.letter}</span>
+                  <span className={`text-sm font-semibold ${item.color}`}>{item.title}</span>
+                </div>
+                <p className="text-[11px] text-slate-400 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="px-6 pb-4">
+            <p className="text-[11px] text-slate-500 italic">
+              Most affiliate sites fail E-E-A-T because they&apos;re rewritten content with links bolted on.
+              Our sites pass it structurally — the data is the experience, the layering is the expertise,
+              the government source is the authority, and the vetting is the trust.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ── Projects ──────────────────────────────── */}
       <section className="max-w-5xl mx-auto px-6 py-10 space-y-5">
