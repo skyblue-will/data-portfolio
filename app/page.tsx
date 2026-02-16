@@ -144,7 +144,7 @@ export default function Home() {
     <main className="min-h-screen bg-white text-zinc-900">
       {/* ── Thesis ──────────────────────────────── */}
       <header className="max-w-3xl mx-auto px-6 pt-20 pb-16">
-        <p className="text-sm text-zinc-400 mb-6 font-mono">Palmer Data Co.</p>
+        <p className="text-sm text-zinc-400 mb-6 font-mono">Strata</p>
         <h1 className="text-[2.5rem] leading-[1.15] font-semibold tracking-tight mb-6">
           We turn free government data into
           <br />
@@ -443,7 +443,7 @@ export default function Home() {
       {/* ── Footer ────────────────────────────── */}
       <footer className="max-w-3xl mx-auto px-6 py-12 border-t border-zinc-100">
         <div className="flex items-baseline justify-between">
-          <p className="text-sm text-zinc-400 font-mono">Palmer Data Co.</p>
+          <p className="text-sm text-zinc-400 font-mono">Strata</p>
           <p className="text-xs text-zinc-300">
             Awin Publisher ID 2753640 · Next.js + Vercel
           </p>

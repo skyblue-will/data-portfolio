@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Palmer Data Co.",
+  title: "Strata",
   description:
     "We turn free government data into consumer tools people actually use.",
 };
