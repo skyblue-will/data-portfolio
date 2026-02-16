@@ -2,23 +2,26 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Data Portfolio — Free Public Data, Beautiful Tools",
+  title: "Palmer Data Co.",
   description:
-    "Tracking our portfolio of consumer tools built on free public data. Layer datasets, tell stories, build things people love.",
+    "We turn free government data into consumer tools people actually use.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#0a0a0f] text-slate-100 antialiased" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+      <body
+        className="bg-white text-zinc-900 antialiased"
+        style={{ fontFamily: "'Inter', system-ui, sans-serif" }}
+      >
         {children}
       </body>
     </html>
